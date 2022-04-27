@@ -1,0 +1,1 @@
+[{"id":13368,"benchmarkKey":"BARBELL_BACK_SQUAT","reps":6,"maxWeight":40.0,"oneRepMax":46.451,"weightUnit":{"unitId":8,"unitKey":"kilogram","factor":1000.0},"dateSet":"2022-03-15T00:26:30.0","linkedBenchmarkExercises":[{"categoryKey":"PULL_UP","exerciseKey":"LAT_PULLDOWN"},{"categoryKey":"SQUAT","exerciseKey":"BARBELL_BACK_SQUAT"}]}]

@@ -1,0 +1,72 @@
+{
+  "id" : null,
+  "firstName" : "Michael",
+  "middleName" : null,
+  "lastName" : "Lennon",
+  "fullName" : "Michael Lennon",
+  "namePrefix" : null,
+  "nameSuffix" : null,
+  "gender" : null,
+  "displayName" : "mblennon",
+  "username" : "MBLENNON",
+  "primaryAddress" : {
+    "addressId" : "d25e4e25-1bdd-4ca2-900d-61f999fca83d",
+    "type" : null,
+    "line1" : "35 HAWKWOOD ST",
+    "line2" : null,
+    "line3" : null,
+    "line4" : null,
+    "city" : "MOUNT GRAVATT EAST",
+    "stateOrProvince" : "QLD",
+    "postalCode" : "4122",
+    "countryCode" : "AU",
+    "countyOrParish" : null,
+    "primary" : true,
+    "phoneNumberId" : "54157f9d-7ea7-4c98-aea9-2e0311b95794",
+    "firstName" : "Michael",
+    "lastName" : "Lennon"
+  },
+  "primaryEmailAddress" : {
+    "emailAddress" : "mblennon68@gmail.com",
+    "type" : null,
+    "primary" : true,
+    "emailVerified" : false,
+    "emailVerificationTimestamp" : null,
+    "emailAddressId" : null
+  },
+  "primaryPhoneNumber" : {
+    "phoneNumberId" : "ba798110-000e-4705-aa3d-9f437bc9301b",
+    "type" : null,
+    "countryCode" : "61",
+    "areaCode" : null,
+    "phoneNumber" : "0412604821",
+    "extension" : null,
+    "carrier" : null,
+    "primary" : true
+  },
+  "locale" : "en_US",
+  "type" : null,
+  "active" : true,
+  "version" : 227,
+  "lastUpdateDateTime" : "2022-04-08T02:09:23Z",
+  "createdDate" : "2013-06-04T22:37:28Z",
+  "customerLocation" : {
+    "countryCode" : "AU",
+    "verified" : true,
+    "verifiedTimestamp" : "2018-02-20T07:06:33Z"
+  },
+  "addresses" : [ ],
+  "emailAddresses" : [ ],
+  "phoneNumbers" : [ {
+    "phoneNumberId" : "54157f9d-7ea7-4c98-aea9-2e0311b95794",
+    "type" : null,
+    "countryCode" : "61",
+    "areaCode" : "",
+    "phoneNumber" : "412604821",
+    "extension" : null,
+    "carrier" : null,
+    "primary" : false
+  } ],
+  "foreignIdentifiers" : [ ],
+  "loginInfo" : null
+}
