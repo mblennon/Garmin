@@ -105,8 +105,6 @@ def Banister(trimp, k1, k2, r1, r2):
     return fitness, fatigue, performance
 
 
-Banister(66, 1, 1.8, 49, 11)
-
 trimps = runs_with_HR3.Trimp.tolist()
 p = []
 fitness = 0
@@ -120,7 +118,6 @@ for i in range(len(trimps)):
     fatigue = fatigue * exp(-1 / r2) + trimps[i]
     performance = fitness*k1 - fatigue*k2
     p.append(performance)
-
 
 result = pd.DataFrame({'date': idx, 'Performance' : p})
 
