@@ -8,6 +8,7 @@ from math import exp
 from matplotlib import pyplot as plt
 
 import pandas as pd
+import numpy as np
 
 # Get Json from folder and concat into fataframe
 
@@ -106,7 +107,9 @@ def Banister(trimp, k1, k2, r1, r2):
 
 
 trimps = runs_with_HR3.Trimp.tolist()
-p = []
+fitness_values = []
+fatigue_values = []
+performance_values = []
 fitness = 0
 fatigue = 0
 r1 = 49
@@ -117,8 +120,53 @@ for i in range(len(trimps)):
     fitness = fitness * exp(-1 / r1) + trimps[i]
     fatigue = fatigue * exp(-1 / r2) + trimps[i]
     performance = fitness*k1 - fatigue*k2
-    p.append(performance)
+    fitness_values.append(fitness)
+    fatigue_values.append(fatigue)
+    performance_values.append(performance)
 
-result = pd.DataFrame({'date': idx, 'Performance' : p})
+result = pd.DataFrame({'date': idx, 'Fitness' : fitness_values, 'Fatigue' : fatigue_values, 'Performance' : performance_values})
 
-result.plot(kind = 'line', x = 'date', y = 'Performance')
+result.plot(kind = 'line', x = 'date', y = ['Fatigue', 'Fitness','Performance'])
+plt.show()
+
+# try with one workout and look at decay variation
+
+trimps2 = trimps[0:100]
+trimps2[0] = 100
+for i in range(1, len(trimps2)):
+    if (i % 2) == 0:
+        trimps2[i] = 0.0
+    else:
+        trimps2[i] = 100.0
+
+i = 51
+while i <100:
+    trimps2[i] = 0
+    i += 1
+
+idx2 = pd.date_range('2020-01-01','2020-04-09')
+trimps2[25] = 100
+fitness_values = []
+fatigue_values = []
+performance_values = []
+fitness = 0
+fatigue = 0
+r1 = 21
+r2 = 12
+k1 = 0.4
+k2 = 0.6
+for i in range(len(trimps2)):
+    fitness = fitness * exp(-1 / r1) + trimps2[i]
+    fatigue = fatigue * exp(-1 / r2) + trimps2[i]
+    performance = fitness*k1 - fatigue*k2
+    fitness_values.append(fitness)
+    fatigue_values.append(fatigue)
+    performance_values.append(performance)
+
+
+result2 = pd.DataFrame({'date': idx2, 'Fitness' : fitness_values, 'Fatigue' : fatigue_values, 'Performance' : performance_values})
+
+b = result2.plot(kind = 'line', x = 'date', y = ['Fatigue', 'Fitness','Performance'])
+
+
+
