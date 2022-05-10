@@ -10,7 +10,7 @@ from matplotlib import pyplot as plt
 import pandas as pd
 import numpy as np
 
-# Get Json from folder and concat into fataframe
+# Get Json from folder and concat into dataframe
 
 # s2 = pd.json_normalize(d)
 
@@ -92,18 +92,14 @@ runs_with_HR = runs_with_HR.drop(['index'], axis=1)
 runs_with_HR = runs_with_HR.set_index('date')
 idx = pd.date_range('2012-07-23','2022-04-19')
 
-# type(runs_with_HR.startTime[0])
-# runs_with_HR = runs_with_HR.sort_values(by='startTime')
-# runs_with_HR2 = runs_with_HR.asfreq('D')
-
 runs_with_HR2 = runs_with_HR.groupby(runs_with_HR.index).agg({'Trimp': sum})
 runs_with_HR3 = runs_with_HR2.reindex(idx, fill_value=0)
 
-def Banister(trimp, k1, k2, r1, r2):
-    fitness = trimp * exp(-1 / r1)
-    fatigue = trimp * exp(-1 / r2)
-    performance = fitness * k1 - fatigue * k2
-    return fitness, fatigue, performance
+# def Banister(trimp, k1, k2, r1, r2):
+#     fitness = trimp * exp(-1 / r1)
+#     fatigue = trimp * exp(-1 / r2)
+#     performance = fitness * k1 - fatigue * k2
+#     return fitness, fatigue, performance
 
 
 trimps = runs_with_HR3.Trimp.tolist()
@@ -124,9 +120,13 @@ for i in range(len(trimps)):
     fatigue_values.append(fatigue)
     performance_values.append(performance)
 
-result = pd.DataFrame({'date': idx, 'Fitness' : fitness_values, 'Fatigue' : fatigue_values, 'Performance' : performance_values})
+result = pd.DataFrame({'date': idx, 'TRIMP': trimps, 'Fitness' : fitness_values, 'Fatigue' : fatigue_values, 'Performance' : performance_values})
 
-result.plot(kind = 'line', x = 'date', y = ['Fatigue', 'Fitness','Performance'])
+result2 = result
+result2['year'] = pd.DatetimeIndex(result2['date']).year
+result3 = result2.loc[result2['year']>2021]
+
+result3.plot(kind = 'line', x = 'date', y = ['Fatigue', 'Fitness','Performance'])
 plt.show()
 
 # try with one workout and look at decay variation
